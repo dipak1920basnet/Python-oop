@@ -1,5 +1,5 @@
 class Resturant:
-    def __init__(self, resturant, cusine_type, number_served = 0):
+    def __init__(self, resturant, cusine_type, number_served=0):
         self.resturant_name = resturant
         self.cusine_type = cusine_type
         self.number_served = number_served
@@ -14,14 +14,14 @@ class Resturant:
         self.number_served = number
 
     def increment_number_served(self):
-        self.number_served +=1
+        self.number_served += 1
 
 
 resturant = Resturant("Java_Coffee", "Serves Coffee")
 print(resturant.resturant_name)
 print(resturant.cusine_type)
 print(resturant.number_served)
-resturant.addCustomer()
+# resturant.addCustomer()
 print(resturant.number_served)
 # resturant.describe_resturant()
 # resturant.open_resturant()
@@ -34,16 +34,37 @@ print(resturant.number_served)
 # resturant_two.open_resturant()
 
 
-# class User():
-#     def __init__(self, name, surname, email, phone_number, resturant:Resturant):
-#         self.name = name
-#         self.surname = surname
-#         self.email = email
-#         self.phone_number = phone_number
-#         self.resturant = resturant
+class User:
+    def __init__(
+        self, name, surname, email, phone_number, resturant: Resturant, login_attempt=0
+    ):
+        self.name = name
+        self.surname = surname
+        self.email = email
+        self.phone_number = phone_number
+        self.resturant = resturant
+        self.login_attempt = login_attempt
 
-#     def describe_user(self):
-#         return f"Hi my name is {self.name} {self.surname} and my email is {self.email} and here is my phone number {self.phone_number}"
+    def describe_user(self):
+        return f"Hi my name is {self.name} {self.surname} and my email is {self.email} and here is my phone number {self.phone_number}"
 
-#     def greet_user(self):
-#         return f"Hello {self.name} {self.surname} welcome to our resturant {self.resturant.resturant_name}"
+    def greet_user(self):
+        return f"Hello {self.name} {self.surname} welcome to our resturant {self.resturant.resturant_name}"
+
+    def increment_login_attempts(self):
+        self.login_attempt += 1
+
+    def reset_login_attempt(self):
+        self.login_attempt = 0
+
+
+user_one = User(
+    name="Dipak", surname="Basnet", email="dipak@gmail.com", phone_number=984632146, resturant=resturant
+)
+
+user_one.increment_login_attempts()
+user_one.increment_login_attempts()
+user_one.increment_login_attempts()
+print(user_one.login_attempt)
+user_one.reset_login_attempt()
+print(user_one.login_attempt)
