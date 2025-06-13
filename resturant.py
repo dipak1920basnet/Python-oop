@@ -68,3 +68,19 @@ user_one.increment_login_attempts()
 print(user_one.login_attempt)
 user_one.reset_login_attempt()
 print(user_one.login_attempt)
+
+
+# IceCream Resturant
+
+class IceCreamStand(Resturant):
+    def __init__(self):
+        super().__init__()
+        self.flavors = []
+
+    def display_flavor(self):
+        for i in range(len(self.flavors)):
+            print(i,":",self.flavors[i])
+
+    def add_flavors(self,flavor):
+        ...
+
