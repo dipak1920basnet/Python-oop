@@ -59,7 +59,11 @@ class User:
 
 
 user_one = User(
-    name="Dipak", surname="Basnet", email="dipak@gmail.com", phone_number=984632146, resturant=resturant
+    name="Dipak",
+    surname="Basnet",
+    email="dipak@gmail.com",
+    phone_number=984632146,
+    resturant=resturant,
 )
 
 user_one.increment_login_attempts()
@@ -72,15 +76,47 @@ print(user_one.login_attempt)
 
 # IceCream Resturant
 
+
 class IceCreamStand(Resturant):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, resturant, cusine_type, number_served=0):
+        super().__init__(resturant, cusine_type, number_served)
         self.flavors = []
 
     def display_flavor(self):
         for i in range(len(self.flavors)):
-            print(i,":",self.flavors[i])
+            print(i, ":", self.flavors[i])
 
-    def add_flavors(self,flavor):
+    def add_flavors(self, flavor):
         ...
 
+
+icecreamstand = IceCreamStand("Himalayan Ice", cusine_type="Serves Ice Cream")
+
+
+class Admin(User):
+    def __init__(
+        self,
+        name,
+        surname,
+        email,
+        phone_number,
+        resturant: IceCreamStand,
+        login_attempt=0,
+    ):
+        super().__init__(name, surname, email, phone_number, resturant, login_attempt)
+        self.previleges = ["can add post", "can delete post", "can ban user"]
+
+    def show_previleges(self):
+        print("Admin Previleges: ")
+        for i in range(len(self.previleges)):
+            print(f"{i}: {self.previleges[i]}")
+
+
+admin = Admin(
+    name="Dipak",
+    surname="Basnet",
+    email="dipak@gmail.com",
+    phone_number=984632146,
+    resturant=resturant,
+)
+admin.show_previleges()
